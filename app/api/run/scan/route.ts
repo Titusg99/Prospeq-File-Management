@@ -4,6 +4,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/lib/drive/auth';
+import { getDb } from '@/lib/db';
 import { jobRunner } from '@/lib/jobs/runner';
 import { UnauthorizedError, ValidationError } from '@/lib/utils/errors';
 import { logInfo } from '@/lib/utils/logging';
@@ -20,9 +21,19 @@ export async function POST(req: NextRequest) {
       throw new UnauthorizedError('Not authenticated');
     }
 
-    const workspaceId = (session as any).workspaceId;
+    // Get workspaceId from session, or look it up in database
+    let workspaceId = (session as any).workspaceId;
     if (!workspaceId) {
-      throw new UnauthorizedError('No workspace found');
+      // Fallback: Look up workspace in database if not in session
+      const db = getDb();
+      const workspace = db
+        .prepare('SELECT id FROM workspaces WHERE user_id = ?')
+        .get(session.user.email) as { id: string } | undefined;
+      
+      if (!workspace) {
+        throw new UnauthorizedError('No workspace found. Please sign in again or create a workspace.');
+      }
+      workspaceId = workspace.id;
     }
 
     const body = await req.json();

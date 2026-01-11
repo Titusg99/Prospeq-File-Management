@@ -202,3 +202,23 @@
 {"location":"lib/drive/auth.ts:31","message":"Secret validation passed","data":{"hasSecret":true},"timestamp":1768096807361,"sessionId":"debug-session","hypothesisId":"H2"}
 {"location":"lib/drive/auth.ts:40","message":"Creating authOptions","data":{"hasSecret":true,"hasGoogleClientId":true,"hasGoogleClientSecret":true},"timestamp":1768096807361,"sessionId":"debug-session","hypothesisId":"H3"}
 {"location":"lib/drive/auth.ts:61","message":"GoogleProvider created successfully","data":{"hasProvider":true},"timestamp":1768096807362,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:19","message":"Validating secret before authOptions","data":{"hasNextAuthSecret":true,"hasAuthSecret":false},"timestamp":1768097127454,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:40","message":"Creating authOptions","data":{"hasSecret":true,"hasGoogleClientId":true,"hasGoogleClientSecret":true},"timestamp":1768097127457,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:31","message":"Secret validation passed","data":{"hasSecret":true},"timestamp":1768097127457,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:61","message":"GoogleProvider created successfully","data":{"hasProvider":true},"timestamp":1768097127458,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:19","message":"Validating secret before authOptions","data":{"hasNextAuthSecret":true,"hasAuthSecret":false},"timestamp":1768097128308,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:31","message":"Secret validation passed","data":{"hasSecret":true},"timestamp":1768097128314,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:40","message":"Creating authOptions","data":{"hasSecret":true,"hasGoogleClientId":true,"hasGoogleClientSecret":true},"timestamp":1768097128315,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:61","message":"GoogleProvider created successfully","data":{"hasProvider":true},"timestamp":1768097128316,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:19","message":"Validating secret before authOptions","data":{"hasNextAuthSecret":true,"hasAuthSecret":false},"timestamp":1768097158772,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:31","message":"Secret validation passed","data":{"hasSecret":true},"timestamp":1768097158778,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:40","message":"Creating authOptions","data":{"hasSecret":true,"hasGoogleClientId":true,"hasGoogleClientSecret":true},"timestamp":1768097158779,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:61","message":"GoogleProvider created successfully","data":{"hasProvider":true},"timestamp":1768097158780,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:19","message":"Validating secret before authOptions","data":{"hasNextAuthSecret":true,"hasAuthSecret":false},"timestamp":1768097159784,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:31","message":"Secret validation passed","data":{"hasSecret":true},"timestamp":1768097159791,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:40","message":"Creating authOptions","data":{"hasSecret":true,"hasGoogleClientId":true,"hasGoogleClientSecret":true},"timestamp":1768097159792,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:61","message":"GoogleProvider created successfully","data":{"hasProvider":true},"timestamp":1768097159793,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:19","message":"Validating secret before authOptions","data":{"hasNextAuthSecret":true,"hasAuthSecret":false},"timestamp":1768097165158,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:31","message":"Secret validation passed","data":{"hasSecret":true},"timestamp":1768097165159,"sessionId":"debug-session","hypothesisId":"H2"}
+{"location":"lib/drive/auth.ts:40","message":"Creating authOptions","data":{"hasSecret":true,"hasGoogleClientId":true,"hasGoogleClientSecret":true},"timestamp":1768097165159,"sessionId":"debug-session","hypothesisId":"H3"}
+{"location":"lib/drive/auth.ts:61","message":"GoogleProvider created successfully","data":{"hasProvider":true},"timestamp":1768097165160,"sessionId":"debug-session","hypothesisId":"H3"}

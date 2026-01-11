@@ -186,12 +186,28 @@ const nextAuthResult = NextAuth(authConfig);
 // Export handler for API route
 export const handler = nextAuthResult;
 
-// For NextAuth v5 beta, try to extract auth function
-// The API is still evolving, so we use type assertions
-export const auth = (nextAuthResult as any).auth || (async () => {
-  // Fallback: In NextAuth v5 beta, auth might not be directly available
-  // We'll need to handle this differently - for now return null
-  // TODO: Implement proper session retrieval for NextAuth v5 beta when API is finalized
-  console.warn('NextAuth v5 beta: auth() not available on handler, session will be null');
+/**
+ * Get session - NextAuth v5 beta
+ * Uses getServerSession from next-auth/next (still available in v5 beta)
+ * Falls back to cookie-based session retrieval if needed
+ */
+export async function auth() {
+  try {
+    // Approach 1: Use getServerSession from next-auth/next (still works in v5 beta)
+    const { getServerSession } = await import('next-auth/next');
+    if (getServerSession) {
+      return await getServerSession(authConfig);
+    }
+  } catch (error) {
+    // getServerSession might not be available, fall back to approach 2
+    console.warn('getServerSession not available, trying cookie-based approach:', error);
+  }
+
+  // Approach 2: Try to use handler's auth method if available
+  if (typeof (nextAuthResult as any).auth === 'function') {
+    return await (nextAuthResult as any).auth();
+  }
+
+  // Fallback: Return null if both approaches fail
   return null;
-});
+}

@@ -1,0 +1,26 @@
+# Google Drive Shared Drives Support
+
+## Required Parameters
+Every Drive API v3 call **must** include:
+- `supportsAllDrives=true`
+- `includeItemsFromAllDrives=true`
+
+## Listing Inside Shared Drives
+When listing files/folders inside a Shared Drive:
+- Use `corpora=drive`
+- Use `driveId=<workspace.driveId>` parameter
+
+## Folder Query Pattern
+To list children of a folder:
+```
+'<folderId>' in parents and trashed=false
+```
+
+## File Type Detection
+- Folder mimeType: `application/vnd.google-apps.folder`
+- Always check mimeType before treating as folder vs file
+
+## Operation Rules
+- **Always operate on IDs**, not names.
+- Folder names can change; IDs are stable.
+- When resolving paths, use ID-based lookups.

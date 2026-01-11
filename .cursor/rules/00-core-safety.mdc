@@ -1,0 +1,16 @@
+# Core Safety Rules
+
+## Default Behavior
+- **Never mutate originals by default**: Only copy into CLEAN directories.
+- All operations work on copies first. Originals remain untouched until explicit promotion.
+
+## Promote Operation
+- **Must** move original to `__OLD__/Archive` subdirectory.
+- **Must** move CLEAN copy into the original's place.
+- **Never** delete files automatically.
+- **Always** log all actions to LogEvents table.
+
+## Safety Checks
+- Before any file operation, verify source exists and is accessible.
+- Track all operations in runs with status and progress.
+- Allow rollback by reversing archive/swap operation.

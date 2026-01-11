@@ -1,0 +1,24 @@
+# Logging and Error Handling
+
+## Logging Granularity
+- **COPY operations**: Log per-file (file_id, source_path, target_path, status).
+- **PROMOTE operations**: Log per-file (file_id, archive_path, new_path, status).
+- **SCAN operations**: Summarized (total_files, total_folders, duration).
+- **PLAN operations**: Summarized (total_items, resolved_count, unresolved_count).
+
+## Log Events
+All operations write to `log_events` table:
+- level: info, warn, error
+- message: Human-readable description
+- metadata: JSON with operation details
+- Timestamps for all events
+
+## Error Handling
+- **Retries with bounded exponential backoff**: Max 3 retries, delays: 1s, 2s, 4s.
+- **Partial failures continue**: Don't stop entire job on single file failure.
+- **Surface retry list**: Return list of files that need retry after job completes.
+
+## Error Recovery
+- Log all errors with context (file_id, operation, error_message).
+- Allow jobs to continue and report partial success.
+- Provide actionable error messages in UI.

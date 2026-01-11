@@ -1,0 +1,20 @@
+# Minimal Changes Principle
+
+## Before Editing
+- **Always search/index and cite files** before making changes.
+- Understand the full context of what you're modifying.
+- Check for existing implementations or similar patterns.
+
+## Change Scope
+- **Touch the smallest number of files** per change.
+- Prefer targeted fixes over broad refactors.
+- Make incremental improvements.
+
+## Refactoring
+- **No large refactors without explicit plan**.
+- Large refactors should be documented in `/docs/ai/DECISIONS.md`.
+- Break refactors into atomic, testable steps.
+
+## Testing Impact
+- Each change should be independently testable.
+- Avoid cascading changes across unrelated modules.

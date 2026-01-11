@@ -1,0 +1,21 @@
+# Planner JSON Output Rules
+
+## Output Format
+- Planner output **must** be JSON-only.
+- Each routing decision is a structured JSON object.
+- Invalid JSON structures route to Other with low confidence.
+
+## Validation
+- **Strict JSON validation** before accepting planner output.
+- Schema validation: target_path, confidence, router_type required.
+- Invalid rows automatically route to Other with confidence 0.0.
+
+## Router Order
+1. **Keyword router runs first**: Fast, deterministic matching.
+2. **LLM router only for ambiguous cases**: When keyword router returns low confidence or no match.
+3. **Fallback to Other**: If both fail or return invalid JSON.
+
+## Confidence Levels
+- High: > 0.8 (keyword match, clear LLM result)
+- Medium: 0.5-0.8 (partial keyword match, ambiguous LLM)
+- Low: < 0.5 (no match, fallback to Other)

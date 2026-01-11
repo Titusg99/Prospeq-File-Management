@@ -180,25 +180,18 @@ const authConfig: NextAuthOptions = {
 // Export for backward compatibility
 export const authOptions = authConfig;
 
-// NextAuth v5 beta: Create handler
-const nextAuthHandler = NextAuth(authConfig);
+// NextAuth v5 beta: Create NextAuth instance
+const nextAuthResult = NextAuth(authConfig);
 
-// Export handler for use in API routes (NextAuth v5 beta pattern)
-export const handler = nextAuthHandler;
+// Export handler for API route
+export const handler = nextAuthResult;
 
-/**
- * Get session - helper function for NextAuth v5 beta
- * Note: NextAuth v5 beta API is still evolving
- * This is a temporary workaround until the API is finalized
- */
-export async function auth() {
-  // Try to use the handler's auth method if available
-  if (typeof (nextAuthHandler as any).auth === 'function') {
-    return await (nextAuthHandler as any).auth();
-  }
-  
-  // Fallback: Return null for now
-  // TODO: Implement proper session retrieval for NextAuth v5 beta
-  console.warn('NextAuth v5 beta: auth() function not available, returning null session');
+// For NextAuth v5 beta, try to extract auth function
+// The API is still evolving, so we use type assertions
+export const auth = (nextAuthResult as any).auth || (async () => {
+  // Fallback: In NextAuth v5 beta, auth might not be directly available
+  // We'll need to handle this differently - for now return null
+  // TODO: Implement proper session retrieval for NextAuth v5 beta when API is finalized
+  console.warn('NextAuth v5 beta: auth() not available on handler, session will be null');
   return null;
-}
+});
